@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+
+    <script src="../static/assets_main/libs/js/echarts.js"></script>
+    <script src="../static/assets_main/vendor/jquery/jquery-3.3.1.min.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/assets_main/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../static/assets_main/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/assets_main/libs/css/style.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet"
+          href="../static/assets_main/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <script src="../static/assets_main/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <title>STOCK IИ YOUR AREA</title>
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- main wrapper -->
+<!-- ============================================================== -->
+<div class="dashboard-main-wrapper">
+
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="home.html">STOCK IИ YOUR AREA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+                    <!--                    <li class="nav-item">-->
+                    <div id="custom-search" class="top-search-bar">
+                        <input id="search_text" class="form-control" type="text" placeholder="Search..">
+                    </div>
+                    <!--                    </li>-->
+                    <!--                                        <li class="nav-item" style="text-align: center">-->
+                    <div class="top-search-bar">
+                        <input id="search_btn" class="form-control" type="button" value="查询股票" onclick="search()">
+                    </div>
+
+
+                    <li class="nav-item dropdown nav-user">
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"><img
+                                src="../static/assets_main/images/avatar-1.jpg" alt=""
+                                class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                             aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name" id="user_name">用户名</h5>
+                            </div>
+
+                            <a class="dropdown-item" href="/"><i class="fas fa-power-off mr-2"></i>退出登录</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            菜单
+                        </li>
+                        <!--                        我的版块-->
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false"
+                               data-target="#submenu-1" aria-controls="submenu-1"><i
+                                    class="fa fa-fw fa-user-circle"></i>我的<span
+                                    class="badge badge-success">6</span></a>
+                            <div id="submenu-1" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="home">我的自选</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                           data-target="#submenu-1-1" aria-controls="submenu-1-1">数据</a>
+                                        <div id="submenu-1-1" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="dashboard-influencer.html">上涨榜</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="influencer-finder.html">下跌榜</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="influencer-profile.html">预留</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--                        大数据版块-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                               data-target="#submenu-2" aria-controls="submenu-2"><i
+                                    class="fa fa-fw fa-rocket"></i>市场</a>
+                            <div id="submenu-2" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/general.html">股票查询</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="plate_up">热门上涨版块</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="plate_down">热门下跌版块</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                               data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>大数据</a>
+                            <div id="submenu-3" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/chart-c3.html">预留</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!---->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="dashboard-wrapper">
+        <div class="dashboard-ecommerce">
+            <div class="container-fluid dashboard-content ">
+                <!--                第一行-->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h2 class="pageheader-title">股票查询</h2>
+                            <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel
+                                mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            市场
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            股票查询
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                第二行-->
+                <div class="ecommerce-widget">
+
+                    <div class="row">
+                        <!-- 基础信息  -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="card border-3 border-top border-top-primary">
+                                <div class="card-body">
+                                    <h5 class="text-muted" id="base_infor"></h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1" id="price_tem"></h1>
+                                    </div>
+                                    <div id="change_percent" class=" float-right">
+                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                             <span class="icon-circle-small icon-box-xs text-success bg-success-light">
+                                                 <i class="fa fa-fw fa-arrow-up"></i>
+                                             </span>
+                                            <span class="ml-1"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- new customer  -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="card border-3 border-top border-top-primary">
+                                <div class="card-body">
+                                    <h5 class="text-muted">今日开盘价</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1" id="opening_price"></h1>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- visitor  -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="card border-3 border-top border-top-primary">
+                                <div class="card-body">
+                                    <h5 class="text-muted">今日最高价</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1" id="highest"></h1>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                            <div class="card border-3 border-top border-top-primary">
+                                <div class="card-body">
+                                    <h5 class="text-muted">成交量</h5>
+                                    <div class="metric-value d-inline-block">
+                                        <h1 class="mb-1" id="turnover_volume"></h1>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+
+                                <h5 class="card-header">详细信息</h5>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table" style="width: 1365px; word-break:break-all">
+                                            <!--                                        <table>-->
+
+                                            <thead class="bg-light">
+                                            <tr class="border-0">
+                                                <th class="border-0"></th>
+
+                                                <th class="border-0">股票简称</th>
+                                                <th class="border-0">交易状态</th>
+                                                <th class="border-0">更新时间</th>
+
+                                                <th class="border-0">涨跌值</th>
+
+                                                <th class="border-0">昨日收盘价</th>
+
+                                                <th class="border-0">今日最低价</th>
+                                                <th class="border-0">振幅</th>
+                                                <!--                                                <th class="border-0">换手率</th>-->
+                                                <th class="border-0">市盈率</th>
+                                                <th class="border-0">动态市盈率</th>
+                                                <th class="border-0">市净率</th>
+                                                <th class="border-0">总市值</th>
+                                                <th class="border-0">流通市值</th>
+
+                                                <th class="border-0">成交额</th>
+                                                <th class="border-0">量比</th>
+                                                <th class="border-0">流通股本</th>
+                                                <th class="border-0">总股本</th>
+                                                <th class="border-0">每股净资产</th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr id="detail">
+                                                <!--                                                <td>1</td>-->
+
+                                                <!--                                                <td>平安银行</td>-->
+                                                <!--                                                <td>已休市</td>-->
+                                                <!--                                                <td>2020-12-23 23:28:08</td>-->
+
+                                                <!--                                                <td>0.10</td>-->
+                                                <!--                                                <td>17.90</td>-->
+
+
+                                                <!--                                                <td>17.79</td>-->
+                                                <!--                                                <td>1.56%</td>-->
+
+                                                <!--                                                <td>12.95</td>-->
+                                                <!--                                                <td>11.70</td>-->
+                                                <!--                                                <td>1.21</td>-->
+                                                <!--                                                <td>3493.1亿</td>-->
+                                                <!--                                                <td>3493.0亿</td>-->
+
+                                                <!--                                                <td>13.46亿</td>-->
+                                                <!--                                                <td>0.86</td>-->
+                                                <!--                                                <td>194.06亿</td>-->
+                                                <!--                                                <td>194.06亿</td>-->
+                                                <!--                                                <td>14.88</td>-->
+                                            </tr>
+
+
+                                            <tr>
+                                                <td colspan="19">
+                                                    <a class="btn btn-outline-light float-right" id="select"
+                                                       onclick="select()">
+                                                        加入自选股
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <div id="container" style="width: 95%;height:800px;margin: 0 auto"></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <!--                第三行-->
+                <table border=1 id="a">
+
+                    <tr>
+
+
+                    </tr>
+
+
+                </table>
+
+
+                <!-- footer -->
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                制作人：刘奕霖 朱烜佶 赵泓哲
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="javascript: void(0);">关于</a>
+
+                                    <a href="javascript: void(0);">联系我们</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+    var user_name = "";
+
+    var id = "";
+    var simple_name = "";
+
+
+    var trade_status = "";
+    var update_time = "";
+    var change_ = "";
+    var closing_price = "";
+    var lowest = "";
+    var PER = "";
+    var dynamic_PER = "";
+    var PBR = "";
+    var market_value = "";
+    var circulation_market_value = "";
+    var turnover_valu = "";
+    var volume_ratio = "";
+    var circulation_shares = "";
+    var total_shares = "";
+    var BPS = "";
+
+
+    var change_percent = "";
+    var opening_price = "";
+    var highest = "";
+    var turnover_volume = "";
+    var price_tem = 0;
+    var amplitude = 0;
+    var turnover_ratio = 0;
+
+
+    var app = {};
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/stock_data",
+        dataType: 'json',
+        success: function (result) {
+            id = result['id']
+            simple_name = result['simple_name']
+            price_tem = result['price_tem']
+            amplitude = result['amplitude']
+            turnover_ratio = result['turnover_ratio']
+            user_name = result['user_name']
+            change_percent = result['change_percent']
+            opening_price = result['opening_price']
+            highest = result['highest']
+            turnover_volume = result['turnover_volume']
+
+            trade_status = result['trade_status']
+            update_time = result['update_time']
+            change_ = result['change_']
+            closing_price = result['closing_price']
+            lowest = result['lowest']
+            PER = result['PER']
+            dynamic_PER = result['dynamic_PER']
+            PBR = result['PBR']
+            market_value = result['market_value']
+            circulation_market_value = result['circulation_market_value']
+            turnover_value = result['turnover_value']
+            volume_ratio = result['volume_ratio']
+            circulation_shares = result['circulation_shares']
+            total_shares = result['total_shares']
+            BPS = result['BPS']
+
+
+            high_price = price_tem * (1 + 0.005 * amplitude);
+            low_price = price_tem * (1 - 0.005 * amplitude);
+
+            turnover_ratio_high = turnover_ratio * 3;
+
+
+            turnover_ratio_high = turnover_ratio_high.toFixed(2);
+
+            high_price = high_price.toFixed(2);
+
+
+            low_price = low_price.toFixed(2);
+
+
+            $(function init() {
+
+                var html = "";
+
+
+                $("#user_name").html(user_name);
+
+                html = id + " " + simple_name;
+                $("#base_infor").empty();
+                $("#base_infor").html(html);
+
+
+                $("#price_tem").empty();
+                $("#price_tem").html(price_tem);
+
+                if (change_percent[0] != "-") {
+
+                    html = "<div class=\"metric-label d-inline-block float-right text-success font-weight-bold\">\n" +
+                        "                                             <span class=\"icon-circle-small icon-box-xs text-success bg-success-light\">\n" +
+                        "                                                 <i class=\"fa fa-fw fa-arrow-up\"></i>\n" +
+                        "                                             </span>\n" +
+                        "                                            <span class=\"ml-1\">" + change_percent + "</span>\n" +
+                        "                                        </div>"
+
+
+                    $("#change_percent").empty();
+                    $("#change_percent").html(html);
+
+                } else {
+                    html = "<div class=\"metric-label d-inline-block float-right text-danger font-weight-bold\">\n" +
+                        "                                        <span class=\"icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light \"><i\n" +
+                        "                                                class=\"fa fa-fw fa-arrow-down\"></i></span><span class=\"ml-1\">" + change_percent + "</span>\n" +
+                        "                                    </div>"
+                    $("#change_percent").empty();
+                    $("#change_percent").html(html);
+                }
+
+                $("#opening_price").empty();
+                $("#opening_price").html(opening_price);
+
+                $("#highest").empty();
+                $("#highest").html(highest);
+
+                $("#turnover_volume").empty();
+                $("#turnover_volume").html(turnover_volume);
+
+                //详细信息
+                html =
+                    "<td>1</td>\n" +
+                    "<td>" + simple_name + "</td>\n" +
+                    "<td>" + trade_status + "</td>\n" +
+                    " <td>" + update_time + "</td>\n" +
+                    "<td>" + change_ + "</td>\n" +
+                    "<td>" + closing_price + "</td>\n" +
+                    "<td>" + lowest + "</td>\n" +
+                    "<td>" + amplitude + "</td>\n" +
+                    "<td>" + PER + "</td>\n" +
+                    "<td>" + dynamic_PER + "</td>\n" +
+                    "<td>" + PBR + "</td>\n" +
+                    "<td>" + market_value + "</td>\n" +
+                    "<td>" + circulation_market_value + "</td>\n" +
+                    "<td>" + turnover_value + "</td>\n" +
+                    "<td>" + volume_ratio + "</td>\n" +
+                    "<td>" + circulation_shares + "</td>\n" +
+                    "<td>" + total_shares + "</td>\n" +
+                    "<td>" + BPS + "</td>\n"
+
+
+                $("#detail").empty();
+                $("#detail").html(html);
+
+
+            });
+
+
+            option = null;
+            option = {
+                title: {
+                    text: simple_name,
+                    subtext: id
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                backgroundColor: '#ffffff',
+                legend: {
+                    data: ['价格', '换手率（%）']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataView: {readOnly: false},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                dataZoom: {
+                    show: false,
+                    start: 0,
+                    end: 100
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        boundaryGap: true,
+                        data: (function () {
+                            var now = new Date();
+                            var res = [];
+                            var len = 10;
+                            while (len--) {
+                                res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
+                                now = new Date(now - 2000);
+                            }
+                            return res;
+                        })()
+
+                    },
+                    {
+                        type: 'category',
+                        boundaryGap: true,
+                        data: (function () {
+                            var res = [];
+                            var len = 10;
+                            while (len--) {
+                                res.push("");
+                            }
+                            return res;
+                        })()
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        scale: true,
+                        name: '价格',
+                        max: high_price,
+                        min: low_price,
+                        boundaryGap: [0.2, 0.2]
+                    },
+                    {
+                        type: 'value',
+                        scale: true,
+                        name: '换手率（%）',
+                        max: turnover_ratio_high,
+                        min: 0,
+                        boundaryGap: [0.2, 0.2]
+                    }
+                ],
+                series: [
+                    {
+                        name: '换手率（%）',
+                        type: 'bar',
+                        xAxisIndex: 1,
+                        yAxisIndex: 1,
+                        data: (function () {
+                            var res = [];
+                            var len = 10;
+                            while (len--) {
+                                // res.push(Math.round(Math.random() * 1000));
+                                res.push(turnover_ratio);
+                            }
+                            return res;
+                        })()
+
+                    },
+                    {
+                        name: '价格',
+                        type: 'line',
+                        data: (function () {
+                            var res = [];
+                            var len = 0;
+                            while (len < 10) {
+                                res.push(price_tem);
+                                len++;
+                            }
+                            return res;
+                        })()
+                    }
+                ]
+            };
+
+
+            app.count = 11;
+            setInterval(function () {
+                price_tem.toString();
+                turnover_ratio.toString();
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:5000/stock_data",
+                    dataType: 'json',
+                    success: function (result) {
+
+                        price_tem = result['price_tem']
+                        turnover_ratio = result['turnover_ratio']
+                        amplitude = result['amplitude']
+
+
+                        trade_status = result['trade_status']
+                        update_time = result['update_time']
+                        change_ = result['change_']
+                        closing_price = result['closing_price']
+                        lowest = result['lowest']
+                        PER = result['PER']
+                        dynamic_PER = result['dynamic_PER']
+                        PBR = result['PBR']
+                        market_value = result['market_value']
+                        circulation_market_value = result['circulation_market_value']
+                        turnover_value = result['turnover_value']
+                        volume_ratio = result['volume_ratio']
+                        circulation_shares = result['circulation_shares']
+                        total_shares = result['total_shares']
+                        BPS = result['BPS']
+                    }
+                });
+
+
+                high_price = price_tem * (1 + 0.005 * amplitude);
+                low_price = price_tem * (1 - 0.005 * amplitude);
+                high_price = high_price.toFixed(2);
+                low_price = low_price.toFixed(2);
+
+                if (turnover_ratio_high < turnover_ratio) {
+                    turnover_ratio_high = turnover_ratio * 3;
+                    turnover_ratio_high = turnover_ratio_high.toFixed(2);
+                    option.yAxis[1].max = turnover_ratio_high;
+                }
+
+                option.yAxis[0].max = high_price;
+                option.yAxis[0].min = low_price;
+
+
+                var axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
+                var data0 = option.series[0].data;
+                var data1 = option.series[1].data;
+
+
+                data0.shift();
+                // // data0.push(Math.round(Math.random() * 1000));
+                data0.push(turnover_ratio);
+                data1.shift();
+                data1.push(price_tem);
+
+                option.xAxis[0].data.shift();
+                option.xAxis[0].data.push(axisData);
+                // option.xAxis.data.shift();
+                // option.xAxis.data.push(axisData);
+                option.xAxis[1].data.shift();
+                option.xAxis[1].data.push("");
+
+
+                $(function change() {
+
+                    var html = "";
+
+
+                    $("#price_tem").empty();
+                    $("#price_tem").html(price_tem);
+
+                    if (change_percent[0] != "-") {
+
+                        html = "<div class=\"metric-label d-inline-block float-right text-success font-weight-bold\">\n" +
+                            "                                             <span class=\"icon-circle-small icon-box-xs text-success bg-success-light\">\n" +
+                            "                                                 <i class=\"fa fa-fw fa-arrow-up\"></i>\n" +
+                            "                                             </span>\n" +
+                            "                                            <span class=\"ml-1\">" + change_percent + "</span>\n" +
+                            "                                        </div>"
+
+
+                        $("#change_percent").empty();
+                        $("#change_percent").html(html);
+
+                    } else {
+                        html = "<div class=\"metric-label d-inline-block float-right text-danger font-weight-bold\">\n" +
+                            "                                        <span class=\"icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light \"><i\n" +
+                            "                                                class=\"fa fa-fw fa-arrow-down\"></i></span><span class=\"ml-1\">" + change_percent + "</span>\n" +
+                            "                                    </div>"
+                        $("#change_percent").empty();
+                        $("#change_percent").html(html);
+                    }
+
+                    $("#opening_price").empty();
+                    $("#opening_price").html(opening_price);
+
+                    $("#highest").empty();
+                    $("#highest").html(highest);
+
+                    $("#turnover_volume").empty();
+                    $("#turnover_volume").html(turnover_volume);
+
+                    //详细信息
+                    html =
+                        "<td>1</td>\n" +
+                        "<td>" + simple_name + "</td>\n" +
+                        "<td>" + trade_status + "</td>\n" +
+                        " <td>" + update_time + "</td>\n" +
+                        "<td>" + change_ + "</td>\n" +
+                        "<td>" + closing_price + "</td>\n" +
+                        "<td>" + lowest + "</td>\n" +
+                        "<td>" + amplitude + "</td>\n" +
+                        "<td>" + PER + "</td>\n" +
+                        "<td>" + dynamic_PER + "</td>\n" +
+                        "<td>" + PBR + "</td>\n" +
+                        "<td>" + market_value + "</td>\n" +
+                        "<td>" + circulation_market_value + "</td>\n" +
+                        "<td>" + turnover_value + "</td>\n" +
+                        "<td>" + volume_ratio + "</td>\n" +
+                        "<td>" + circulation_shares + "</td>\n" +
+                        "<td>" + total_shares + "</td>\n" +
+                        "<td>" + BPS + "</td>\n"
+
+
+                    $("#detail").empty();
+                    $("#detail").html(html);
+                });
+
+
+                // option.xAxis[1].data.push(turnover_ratio);
+
+
+                myChart.setOption(option);
+            }, 5000);
+
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+
+        }
+    });
+
+
+</script>
+
+
+<script type="text/javascript">
+
+
+    function IsNum(num) {
+        var reNum = /^\d*$/;
+        return (reNum.test(num));
+    }
+
+    function IsAlphabet(alp) {
+        var reAlp = /[a-z]/i;
+        return (reAlp.test(alp));
+    }
+
+    function search() {
+        var text = document.getElementById("search_text");
+        // alert(typeof (text.value));
+
+        var temp = document.createElement("form");
+        temp.action = "/search_data";
+        temp.method = "post";
+        // temp.style.display = "none";
+        //
+
+
+        var user_name_ = document.createElement("textarea");
+        user_name_.name = "user_name_";
+        user_name_.value = user_name;
+        temp.appendChild(user_name_);
+
+        var content = document.createElement("textarea");
+        content.name = "content";
+        content.value = text.value;
+        temp.appendChild(content);
+
+        if (IsNum(content.value)) {
+            if (content.value.length != 6) {
+                alert("格式不符合")
+                return 0;
+            }
+            var kind = document.createElement("textarea");
+            kind.name = "kind";
+            //数字代码
+            kind.value = "1";
+            temp.appendChild(kind);
+        } else if (IsAlphabet(content.value)) {
+            if (content.value.length != 4) {
+                alert("格式不符合")
+                return 0;
+            }
+            var kind = document.createElement("textarea");
+            kind.name = "kind";
+            //字母代码
+            kind.value = "2";
+            temp.appendChild(kind);
+        } else {
+            var kind = document.createElement("textarea");
+            kind.name = "kind";
+            //中文代码
+            kind.value = "3";
+            temp.appendChild(kind);
+        }
+
+
+        document.body.appendChild(temp);
+        temp.submit();
+        document.body.removeChild(temp);
+
+        // temp.submit();
+        // alert(temp);
+
+
+    }
+
+    function select() {
+        var temp = document.createElement("form");
+        temp.action = "/select_stock";
+        temp.method = "post";
+
+        var user_name_ = document.createElement("textarea");
+        user_name_.name = "user_name_";
+        user_name_.value = user_name;
+        temp.appendChild(user_name_);
+
+        var select_id = document.createElement("textarea");
+        select_id.name = "select_id";
+        select_id.value = id;
+        temp.appendChild(select_id);
+
+        document.body.appendChild(temp);
+        temp.submit();
+        document.body.removeChild(temp);
+    }
+
+</script>
+
+<!-- bootstap bundle js -->
+<script src="../static/assets_main/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
+
+</body>
+
+</html>

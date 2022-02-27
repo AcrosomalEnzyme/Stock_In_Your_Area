@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/assets_main/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../static/assets_main/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/assets_main/libs/css/style.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet"
+          href="../static/assets_main/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="../static/assets_main/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <script src="../static/assets_main/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <title>STOCK IИ YOUR AREA</title>
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- main wrapper -->
+<!-- ============================================================== -->
+<div class="dashboard-main-wrapper">
+    <!-- ============================================================== -->
+    <!-- navbar -->
+    <!-- ============================================================== -->
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="home.html">STOCK IИ YOUR AREA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+                    <!--                    <li class="nav-item">-->
+                    <div id="custom-search" class="top-search-bar">
+                        <input id="search_text" class="form-control" type="text" placeholder="Search..">
+                    </div>
+                    <!--                    </li>-->
+                    <!--                                        <li class="nav-item" style="text-align: center">-->
+                    <div class="top-search-bar">
+                        <input id="search_btn" class="form-control" type="button" value="查询股票" onclick="search()">
+                    </div>
+
+
+                    <li class="nav-item dropdown nav-user">
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"><img
+                                src="../static/assets_main/images/avatar-1.jpg" alt=""
+                                class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                             aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name" id="user_name">用户名</h5>
+                            </div>
+
+                            <a class="dropdown-item" href="/"><i class="fas fa-power-off mr-2"></i>退出登录</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            菜单
+                        </li>
+                        <!--                        我的版块-->
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false"
+                               data-target="#submenu-1" aria-controls="submenu-1"><i
+                                    class="fa fa-fw fa-user-circle"></i>我的<span
+                                    class="badge badge-success">6</span></a>
+                            <div id="submenu-1" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="home">我的自选</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                           data-target="#submenu-1-1" aria-controls="submenu-1-1">数据</a>
+                                        <div id="submenu-1-1" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="dashboard-influencer.html">上涨榜</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="influencer-finder.html">下跌榜</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="influencer-profile.html">预留</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--                        大数据版块-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                               data-target="#submenu-2" aria-controls="submenu-2"><i
+                                    class="fa fa-fw fa-rocket"></i>市场</a>
+                            <div id="submenu-2" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/general.html">股票查询</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="plate_up">热门上涨版块</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="plate_down">热门下跌版块</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                               data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>大数据</a>
+                            <div id="submenu-3" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/chart-c3.html">预留</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!---->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="dashboard-wrapper">
+        <div class="dashboard-ecommerce">
+            <div class="container-fluid dashboard-content ">
+
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h2 class="pageheader-title">热门下跌版块</h2>
+                            <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel
+                                mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            市场
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            热门下跌版块
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="ecommerce-widget">
+
+
+
+
+                    <!--                    涨跌排行-->
+                    <div class="row">
+
+
+                        <div class="col-xl-9 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                            <div class="card">
+                                <h5 class="card-header">下跌版块排行</h5>
+                                <div class="card-body p-0">
+                                    <ul class="traffic-sales list-group list-group-flush" id="list">
+<!--                                        <li class="traffic-sales-content list-group-item "><span-->
+<!--                                                class="traffic-sales-name">xxx版块 &nbsp</span><span-->
+<!--                                                class="traffic-sales-name">   xxx版块   </span><span-->
+<!--                                                class="traffic-sales-amount">$4000.00  <span-->
+<!--                                                class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i-->
+<!--                                                class="fa fa-fw fa-arrow-up"></i></span><span-->
+<!--                                                class="ml-1 text-success">5.86%</span></span>-->
+<!--                                        </li>-->
+<!--                                        <li class="traffic-sales-content list-group-item"><span-->
+<!--                                                class="traffic-sales-name">Search<span class="traffic-sales-amount">$3123.00  <span-->
+<!--                                                class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i-->
+<!--                                                class="fa fa-fw fa-arrow-up"></i></span><span-->
+<!--                                                class="ml-1 text-success">5.86%</span></span>-->
+<!--                                                </span>-->
+<!--                                        </li>-->
+<!--                                        <li class="traffic-sales-content list-group-item"><span-->
+<!--                                                class="traffic-sales-name">Social<span-->
+<!--                                                class="traffic-sales-amount ">$3099.00  <span-->
+<!--                                                class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i-->
+<!--                                                class="fa fa-fw fa-arrow-up"></i></span><span-->
+<!--                                                class="ml-1 text-success">5.86%</span></span>-->
+<!--                                                </span>-->
+<!--                                        </li>-->
+<!--                                        <li class="traffic-sales-content list-group-item"><span-->
+<!--                                                class="traffic-sales-name">Referrals<span-->
+<!--                                                class="traffic-sales-amount ">$2220.00   <span-->
+<!--                                                class="icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light"><i-->
+<!--                                                class="fa fa-fw fa-arrow-down"></i></span><span-->
+<!--                                                class="ml-1 text-danger">4.02%</span></span>-->
+<!--                                                </span>-->
+<!--                                        </li>-->
+<!--                                        <li class="traffic-sales-content list-group-item "><span-->
+<!--                                                class="traffic-sales-name">Email<span class="traffic-sales-amount">$1567.00   <span-->
+<!--                                                class="icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light"><i-->
+<!--                                                class="fa fa-fw fa-arrow-down"></i></span><span-->
+<!--                                                class="ml-1 text-danger">3.86%</span></span>-->
+<!--                                                </span>-->
+<!--                                        </li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- footer -->
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                制作人：刘奕霖 朱烜佶 赵泓哲
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="javascript: void(0);">关于</a>
+
+                                    <a href="javascript: void(0);">联系我们</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+    var user_name = "";
+
+    var id = "";
+    var simple_name = "";
+    var plate_name = "";
+    var company_id = "";
+    var plate_change_percent = "";
+    var company_change_percent = "";
+
+
+    var html = "";
+
+
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/plate_data",
+        dataType: 'json',
+        success: function (result) {
+            user_name = result['user_name'];
+            $("#user_name").html(user_name);
+            data = result['plate_down'];
+            var length = data.length;
+
+            //改写网页内容
+            html = "";
+
+            for (var i = 0; i < length; i++) {
+                id = data[i][0];
+                plate_name = data[i][1];
+                company_id = data[i][2];
+                simple_name = data[i][3];
+                plate_change_percent = data[i][4];
+                company_change_percent = data[i][5];
+
+
+                html = html + "<li class=\"traffic-sales-content list-group-item \"><span\n" +
+                                "class=\"traffic-sales-name\">" + id + " &nbsp &nbsp" + "</span><span\n" +
+                                "class=\"traffic-sales-name\">   " + plate_name + "   </span><span\n" +
+                                "class=\"icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light\"><i\n" +
+                                "class=\"fa fa-fw fa-arrow-down\"></i></span><span\n" +
+                                "class=\"ml-1 text-danger\">" + plate_change_percent + "</span></span><span\n" +
+                                "class=\"traffic-sales-amount\">代表公司：" + simple_name + "&nbsp" + company_id + "  <span\n" +
+                                "class=\"icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light\"><i\n" +
+                                "class=\"fa fa-fw fa-arrow-down\"></i></span><span\n" +
+                                "class=\"ml-1 text-danger\">" + company_change_percent + "</span></span>\n" +
+                                "</li>"
+
+
+
+            }
+
+
+            $("#list").empty();
+            $("#list").html(html);
+
+
+            setInterval(function () {
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:5000/plate_data",
+                    dataType: 'json',
+                    success: function (result) {
+                        data = result['plate_down'];
+                        var length = data.length;
+
+                        //改写网页内容
+                        html = "";
+
+                        for (var i = 0; i < length; i++) {
+                            id = data[i][0];
+                            plate_name = data[i][1];
+                            company_id = data[i][2];
+                            simple_name = data[i][3];
+                            plate_change_percent = data[i][4];
+                            company_change_percent = data[i][5];
+
+
+
+
+
+                            html = html + "<li class=\"traffic-sales-content list-group-item \"><span\n" +
+                                "class=\"traffic-sales-name\">" + id + " &nbsp &nbsp" + "</span><span\n" +
+                                "class=\"traffic-sales-name\">   " + plate_name + "   </span><span\n" +
+                                "class=\"icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light\"><i\n" +
+                                "class=\"fa fa-fw fa-arrow-down\"></i></span><span\n" +
+                                "class=\"ml-1 text-danger\">" + plate_change_percent + "</span></span><span\n" +
+                                "class=\"traffic-sales-amount\">代表公司：" + simple_name + "&nbsp" + company_id + "  <span\n" +
+                                "class=\"icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light\"><i\n" +
+                                "class=\"fa fa-fw fa-arrow-down\"></i></span><span\n" +
+                                "class=\"ml-1 text-danger\">" + company_change_percent + "</span></span>\n" +
+                                "</li>"
+
+
+
+                        }
+
+
+                        $("#list").empty();
+                        $("#list").html(html);
+
+                    }
+                });
+
+
+            }, 10000);
+
+        }
+    });
+
+
+</script>
+
+
+<script type="text/javascript">
+
+
+    function IsNum(num) {
+        var reNum = /^\d*$/;
+        return (reNum.test(num));
+    }
+
+    function IsAlphabet(alp) {
+        var reAlp = /[a-z]/i;
+        return (reAlp.test(alp));
+    }
+
+    function search() {
+        var text = document.getElementById("search_text");
+        // alert(typeof (text.value));
+
+        var temp = document.createElement("form");
+        temp.action = "/search_data";
+        temp.method = "post";
+        // temp.style.display = "none";
+        //
+
+
+        var user_name_ = document.createElement("textarea");
+        user_name_.name = "user_name_";
+        user_name_.value = user_name;
+        temp.appendChild(user_name_);
+
+        var content = document.createElement("textarea");
+        content.name = "content";
+        content.value = text.value;
+        temp.appendChild(content);
+
+        if (IsNum(content.value)) {
+            if (content.value.length != 6) {
+                alert("格式不符合")
+                return 0;
+            }
+            var kind = document.createElement("textarea");
+            kind.name = "kind";
+            //数字代码
+            kind.value = "1";
+            temp.appendChild(kind);
+        } else if (IsAlphabet(content.value)) {
+            if (content.value.length != 4) {
+                alert("格式不符合")
+                return 0;
+            }
+            var kind = document.createElement("textarea");
+            kind.name = "kind";
+            //字母代码
+            kind.value = "2";
+            temp.appendChild(kind);
+        } else {
+            var kind = document.createElement("textarea");
+            kind.name = "kind";
+            //中文代码
+            kind.value = "3";
+            temp.appendChild(kind);
+        }
+
+
+        document.body.appendChild(temp);
+        temp.submit();
+        document.body.removeChild(temp);
+
+        // temp.submit();
+        // alert(temp);
+
+
+    }
+
+    function select() {
+        var temp = document.createElement("form");
+        temp.action = "/select_stock";
+        temp.method = "post";
+
+        var user_name_ = document.createElement("textarea");
+        user_name_.name = "user_name_";
+        user_name_.value = user_name;
+        temp.appendChild(user_name_);
+
+        var select_id = document.createElement("textarea");
+        select_id.name = "select_id";
+        select_id.value = id;
+        temp.appendChild(select_id);
+
+        document.body.appendChild(temp);
+        temp.submit();
+        document.body.removeChild(temp);
+    }
+
+</script>
+
+<script src="../static/assets_main/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

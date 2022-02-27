@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>STOCK IИ YOUR AREA</title>
+    <meta name="author" content="DeathGhost"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets_LogReg/css/dmaku.css" tppabs="css/dmaku.css"/>
+    <script src="../static/assets_LogReg/js/jquery.js"></script>
+    <script src="../static/assets_LogReg/js/verificationNumbers.js" tppabs="js/verificationNumbers.js"></script>
+    <script src="../static/assets_LogReg/js/Particleground.js" tppabs="js/Particleground.js"></script>
+    {#    <script src="../static/js/login_register.js"></script>#}
+    <script>
+        $(document).ready(function () {
+            //粒子背景特效
+            $('body').particleground({
+                dotColor: '#5cbdaa',
+                lineColor: '#5cbdaa'
+            });
+            //验证码
+
+        });
+    </script>
+</head>
+
+<body>
+<dl class="admin_login">
+    <dt>
+        <div id="my_title">
+            <strong>STOCK IИ YOUR AREA</strong>
+            <em>Stocks Are The Tears Of Han River</em>
+        </div>
+
+    </dt>
+
+    <form method="post">
+
+        <dd class="user_icon">
+            <input type="text" placeholder="账号" class="login_txtbx" name="username"/>
+        </dd>
+        <dd class="pwd_icon">
+            <input type="password" placeholder="密码" class="login_txtbx" name="password"/>
+        </dd>
+        <dd class="pwd_icon">
+            <input type="password" placeholder="请再次输入密码" class="login_txtbx" name="password2"/>
+        </dd>
+
+
+        <dd>
+            <input type="submit" value="注册" class="submit_btn" id="get_register"/>
+        </dd>
+
+        {% for message in get_flashed_messages() %}
+            <p style="color: white;font-size: 20px;text-align: center">
+                {{ message }}
+            </p>
+        {% endfor %}
+    </form>
+
+
+</dl>
+</body>
+</html>
